@@ -480,17 +480,16 @@ public class MitchellClaimService {
 	/**
 	 * Delete a claim by claim number 
 	 * @param ClaimNumber
+	 * @throws SQLException 
 	 */
-	public void deleteByClaimNumber(String ClaimNumber){
+	public void deleteByClaimNumber(String ClaimNumber) throws SQLException{
 		if (ClaimNumber == null){
 			return;
 		}
 		
 		final String cn = ClaimNumber;
 		
-		try {
-			
-            		TransactionManager.callInTransaction(connectionSource,
+        TransactionManager.callInTransaction(connectionSource,
 				new Callable<Void>() {
 					public Void call() throws Exception {
 						/** delete from basic info table **/
@@ -508,9 +507,7 @@ public class MitchellClaimService {
 					}
 				});
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
+
 	}
 	
 	public static void main(String args[]){
