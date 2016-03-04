@@ -10,19 +10,21 @@ MitchellClaimService: includes one Java file implementing all the API.
 (1) Interanl Representation:
 I used a user defined class MitchellClaimType to represent a claim. The definition of MitchellClaimType is based on other sub-type defined by xsd file: such as LossInfoType, VehicleInfoType, etc. What I did here is actually convert a XML schema to a bunch of JavaBean classes. All those classes are is in MitchellClaimServiceUtils.
 
-Here are the mapping relation between types defined in xsd file and JavaBeans classes:
+Here are the mapping relations between types defined in xsd file and Java(Bean) classes:
 
-MitchellClaimType -- > MitchellClaimType(JavaBean class)
+      xsd                       java object
 
-StatusCode --> StatusCode(Java enum type)
+MitchellClaimType  -->  MitchellClaimType(JavaBean class)
 
-CauseOfLossCode --> CauseOfLossCode(Java enum type)
+StatusCode         -->  StatusCode(Java enum type)
 
-LossInfoType --> LossInfoType(JavaBean class)
+CauseOfLossCode    -->  CauseOfLossCode(Java enum type)
 
-VehicleListType --> VehicleListType(JavaBean class)
+LossInfoType       -->  LossInfoType(JavaBean class)
 
-VehicleInfoType --> VehicleInfoType(JavaBean class)
+VehicleListType    -->  VehicleListType(JavaBean class)
+
+VehicleInfoType    -->  VehicleInfoType(JavaBean class)
 
 Other primitive types is converted by JAXB standard, like string is converted to Java String, dateTime and date are converted to XMLGregorianCalendar. 
 
