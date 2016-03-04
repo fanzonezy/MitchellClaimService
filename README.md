@@ -6,6 +6,7 @@ Here are THREE packages:
 MitchellClaimORMModels: includes all the ORM classes(models).
 MitchellClaimServiceUtils: includes all the data types sufficient to represent a claim
 MitchellClaimService: includes one Java file implementing all the API. 
+TestCases: inlcudes all the unit test and a test client. 
 
 (1) Interanl Representation:
 I used a user defined class MitchellClaimType to represent a claim. The definition of MitchellClaimType is based on other sub-type defined by xsd file: such as LossInfoType, VehicleInfoType, etc. What I did here is actually convert a XML schema to a bunch of JavaBean classes. All those classes are is in MitchellClaimServiceUtils.
