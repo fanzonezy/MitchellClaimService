@@ -102,12 +102,12 @@ public class MitchellClaimService {
 		Date gcDate = vehicleInfo_t.getLicPlateExpDate();
 		GregorianCalendar expDateCalendar = new GregorianCalendar();
 		expDateCalendar.setTime(gcDate);
-        XMLGregorianCalendar expDate = null;
-        try {
-            expDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(expDateCalendar);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        	XMLGregorianCalendar expDate = null;
+        	try {
+            		expDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(expDateCalendar);
+        	} catch (Exception e) {
+            		e.printStackTrace();
+        	}
 		vehicleInfo.setLicPlateExpDate(expDate);
 		
 		vehicleInfo.setLicPlateState(vehicleInfo_t.getLicPlateState());
@@ -128,8 +128,8 @@ public class MitchellClaimService {
 	 * @return
 	 */
 	public static MitchellClaimType toMitchellClaimType(MitchellClaimBasicInfo basicInfo_t, 
-												  MitchellClaimLossInfo lossInfo_t,
-												  List<MitchellClaimVehicleInfo> lvehicleInfo_t){
+							    MitchellClaimLossInfo lossInfo_t,
+							    List<MitchellClaimVehicleInfo> lvehicleInfo_t){
 		MitchellClaimType mc = new MitchellClaimType();
 		
 		/** set return data type **/
@@ -142,12 +142,12 @@ public class MitchellClaimService {
 		/** set loss date **/
 		GregorianCalendar lossDateCalendar = new GregorianCalendar();
 		lossDateCalendar.setTime(basicInfo_t.getLossDate());
-        XMLGregorianCalendar lossDate = null;
-        try {
-            lossDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(lossDateCalendar);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        	XMLGregorianCalendar lossDate = null;
+        	try {
+            		lossDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(lossDateCalendar);
+        	} catch (Exception e) {
+            		e.printStackTrace();
+        	}
 		mc.setLossDate(lossDate);
 		
 		/*** set lossInfo ***/
@@ -158,12 +158,12 @@ public class MitchellClaimService {
 		/** set reported date **/
 		GregorianCalendar reportedDateCalendar = new GregorianCalendar();
 		reportedDateCalendar.setTime(lossInfo_t.getReportedDate());
-        XMLGregorianCalendar reportedDate = null;
-        try {
-            reportedDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(reportedDateCalendar);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        	XMLGregorianCalendar reportedDate = null;
+        	try {
+            		reportedDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(reportedDateCalendar);
+        	} catch (Exception e) {
+            		e.printStackTrace();
+        	}
 		lossInfo.setReportedDate(reportedDate);
 		mc.setLossInfo(lossInfo);
 		
@@ -199,43 +199,43 @@ public class MitchellClaimService {
 			
 				/*** Create basic claim info tuple ***/
 				MitchellClaimBasicInfo claimBasicInfo_t = new MitchellClaimBasicInfo(
-													  	    mct.getClaimNumber(),
-													  	    mct.getClaimantFirstName(),
-													  	    mct.getClaimantLastName(),
-													  	    mct.getStatus(),
-													  	    mct.getLossDate(),
-													  	    mct.getAssignedAdjusterID()
-													  	  ); 
+										mct.getClaimNumber(),
+										mct.getClaimantFirstName(),
+										mct.getClaimantLastName(),
+										mct.getStatus(),
+										mct.getLossDate(),
+										mct.getAssignedAdjusterID()
+									); 
 				MitchellClaimBasicInfoDAO.create(claimBasicInfo_t);
 			
 				/*** Create loss info tuple ***/
 				LossInfoType lossInfo = mct.getLossInfo();
 				MitchellClaimLossInfo lossInfo_t = new MitchellClaimLossInfo(
-													 mct.getClaimNumber(),
-													 mct.getLossDate(),
-													 lossInfo.getCauseOfLoss(),
-													 lossInfo.getReportedDate(),
-													 lossInfo.getLossDescription()
-												   );
+									mct.getClaimNumber(),
+									mct.getLossDate(),
+									lossInfo.getCauseOfLoss(),
+									lossInfo.getReportedDate(),
+									lossInfo.getLossDescription()
+								);
 				MitchellClaimLossInfoDAO.create(lossInfo_t);
 			
 				/*** Create vehicle info tuples ***/
 				List<VehicleInfoType> vehicleList = mct.getVehicles().getVehicleDetails();
 				for (VehicleInfoType vehicle : vehicleList){
 					MitchellClaimVehicleInfo vehicleInfo_t = new MitchellClaimVehicleInfo(
-															   mct.getClaimNumber(),
-															   vehicle.getDamageDescription(),
-															   vehicle.getEngineDescription(),
-															   vehicle.getExteriorColor(),
-															   vehicle.getLicPlate(),
-															   vehicle.getLicPlateExpDate(),
-															   vehicle.getLicPlateState(),
-															   vehicle.getMakeDescription(),
-															   vehicle.getMileage(), 
-															   vehicle.getModelDescription(),
-															   vehicle.getModelYear(),
-															   vehicle.getVin()
-														 	 );
+											mct.getClaimNumber(),
+											vehicle.getDamageDescription(),
+											vehicle.getEngineDescription(),
+											vehicle.getExteriorColor(),
+											vehicle.getLicPlate(),
+											vehicle.getLicPlateExpDate(),
+											vehicle.getLicPlateState(),
+											vehicle.getMakeDescription(),
+											vehicle.getMileage(), 
+											vehicle.getModelDescription(),
+											vehicle.getModelYear(),
+											vehicle.getVin()
+										);
 					MitchellClaimVehicleInfoDAO.create(vehicleInfo_t);
 				}
 			}
