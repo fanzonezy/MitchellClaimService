@@ -47,7 +47,7 @@ input: string
 output: None
 throws: IllegalArgumentException, SQLException
 
-spec: if seccessful, a claim in back store will be updated by input XML string. If the input is invalid, an IllegalArgumentException will be raised. if one of the write option to date base is failed, a SQLException will be raised. This API implement by transaction.   
+spec: if seccessful, a claim in back store will be updated by input XML string. If the input is invalid, an IllegalArgumentException will be raised. if one of the write option to date base is failed, a SQLException will be raised. This API implement by transaction. If the claim you want to update is not in date base, an SQLException will be raised.    
 
 (5) readVehicleByClaimNumberAndVin
 input: (1) claim number: string (2) vin: string
