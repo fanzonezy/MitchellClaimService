@@ -13,6 +13,7 @@ Part Two: Implementation and Components:
 ORM: OrmLite
 DataBase driver: sqlite
 XML marshaler and unmarshaler: jaxb
+Unit Test; JUnit
 
 The work flow of implementation is: 
 (1) Define the behavior of APIs (May also made test cases, if working in TDD mode).
