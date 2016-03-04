@@ -39,10 +39,10 @@ public class MitchellClaimLossInfo {
 	}
 	
 	public MitchellClaimLossInfo(String ClaimNumber,
-							     XMLGregorianCalendar LossDate,
-							     CauseOfLossCode CauseOfLoss,
-							     XMLGregorianCalendar ReportedDate,
-							     String LossDescription){
+			             XMLGregorianCalendar LossDate,
+				     CauseOfLossCode CauseOfLoss,
+				     XMLGregorianCalendar ReportedDate,
+				     String LossDescription){
 		this.ClaimNumber = ClaimNumber;
 		this.LossDate = LossDate.toGregorianCalendar().getTime();
 		this.CauseOfLoss = CauseOfLoss;
@@ -101,16 +101,16 @@ public class MitchellClaimLossInfo {
 		}
 		
 		if (other.getLossInfo()!= null && other.getLossInfo().getCauseOfLoss() != null){
-    		CauseOfLoss = other.getLossInfo().getCauseOfLoss();
-    	}
+    			CauseOfLoss = other.getLossInfo().getCauseOfLoss();
+    		}
     	
-    	if (other.getLossInfo()!= null && other.getLossInfo().getLossDescription() != null){
-    		LossDescription = other.getLossInfo().getLossDescription();
-    	}
+    		if (other.getLossInfo()!= null && other.getLossInfo().getLossDescription() != null){
+    			LossDescription = other.getLossInfo().getLossDescription();
+    		}
     	
-    	if (other.getLossInfo()!= null && other.getLossInfo().getReportedDate() != null){
-    		ReportedDate = other.getLossInfo().getReportedDate().toGregorianCalendar().getTime();
-    	}
+    		if (other.getLossInfo()!= null && other.getLossInfo().getReportedDate() != null){
+    			ReportedDate = other.getLossInfo().getReportedDate().toGregorianCalendar().getTime();
+    		}
  
 	}
 	
