@@ -198,31 +198,32 @@ public class MitchellClaimService {
 				MitchellClaimType mct = ((JAXBElement<MitchellClaimType>) un.unmarshal(new ByteArrayInputStream(XMLString.getBytes(StandardCharsets.UTF_8)))).getValue();
 			
 				/*** Create basic claim info tuple ***/
-				MitchellClaimBasicInfo claimBasicInfo_t = new MitchellClaimBasicInfo(
-										mct.getClaimNumber(),
-										mct.getClaimantFirstName(),
-										mct.getClaimantLastName(),
-										mct.getStatus(),
-										mct.getLossDate(),
-										mct.getAssignedAdjusterID()
-									); 
-				MitchellClaimBasicInfoDAO.create(claimBasicInfo_t);
-			
+				final MitchellClaimBasicInfo claimBasicInfo_t = new MitchellClaimBasicInfo(
+														  	    mct.getClaimNumber(),
+														  	    mct.getClaimantFirstName(),
+														  	    mct.getClaimantLastName(),
+														  	    mct.getStatus(),
+														  	    mct.getLossDate(),
+														  	    mct.getAssignedAdjusterID()
+														  	  ); 
+				
+				
 				/*** Create loss info tuple ***/
 				LossInfoType lossInfo = mct.getLossInfo();
-				MitchellClaimLossInfo lossInfo_t = new MitchellClaimLossInfo(
-									mct.getClaimNumber(),
-									mct.getLossDate(),
-									lossInfo.getCauseOfLoss(),
-									lossInfo.getReportedDate(),
-									lossInfo.getLossDescription()
-								);
-				MitchellClaimLossInfoDAO.create(lossInfo_t);
-			
+				final MitchellClaimLossInfo lossInfo_t = new MitchellClaimLossInfo(
+														 mct.getClaimNumber(),
+														 mct.getLossDate(),
+														 lossInfo.getCauseOfLoss(),
+														 lossInfo.getReportedDate(),
+														 lossInfo.getLossDescription()
+													   );
+				
+				
 				/*** Create vehicle info tuples ***/
 				List<VehicleInfoType> vehicleList = mct.getVehicles().getVehicleDetails();
+				final List<MitchellClaimVehicleInfo> l_vehicleInfo_t = new ArrayList<MitchellClaimVehicleInfo>();
 				for (VehicleInfoType vehicle : vehicleList){
-					MitchellClaimVehicleInfo vehicleInfo_t = new MitchellClaimVehicleInfo(
+					l_vehicleInfo_t.add(new MitchellClaimVehicleInfo(
 											mct.getClaimNumber(),
 											vehicle.getDamageDescription(),
 											vehicle.getEngineDescription(),
@@ -231,13 +232,26 @@ public class MitchellClaimService {
 											vehicle.getLicPlateExpDate(),
 											vehicle.getLicPlateState(),
 											vehicle.getMakeDescription(),
-											vehicle.getMileage(), 
+										    vehicle.getMileage(), 
 											vehicle.getModelDescription(),
 											vehicle.getModelYear(),
-											vehicle.getVin()
+											vehicle.getVin())
 										);
-					MitchellClaimVehicleInfoDAO.create(vehicleInfo_t);
 				}
+				
+				
+				TransactionManager.callInTransaction(connectionSource,
+						new Callable<Void>() {
+							public Void call() throws Exception {
+								MitchellClaimBasicInfoDAO.create(claimBasicInfo_t);
+								MitchellClaimLossInfoDAO.create(lossInfo_t);
+								for (MitchellClaimVehicleInfo vehicleInfo_t : l_vehicleInfo_t){
+									MitchellClaimVehicleInfoDAO.create(vehicleInfo_t);
+								}
+								return null;
+							}
+						});
+				
 			}
 		}catch(Exception e){
 			e.printStackTrace();
