@@ -12,10 +12,15 @@ I used a user defined class MitchellClaimType to represent a claim. The definiti
 
 Here are the mapping relation between types defined in xsd file and JavaBeans classes:
 MitchellClaimType -- > MitchellClaimType(JavaBean class)
+
 StatusCode --> StatusCode(Java enum type)
+
 CauseOfLossCode --> CauseOfLossCode(Java enum type)
+
 LossInfoType --> LossInfoType(JavaBean class)
+
 VehicleListType --> VehicleListType(JavaBean class)
+
 VehicleInfoType --> VehicleInfoType(JavaBean class)
 
 Other primitive types is converted by JAXB standard, like string is converted to Java String, dateTime and date are converted to XMLGregorianCalendar. 
