@@ -17,6 +17,8 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import org.junit.internal.Throwables;
+
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
@@ -413,7 +415,7 @@ public class MitchellClaimService {
 	 */
 	public void updateClaim(String XMLString) throws SQLException{
 		if (XMLString == null){
-			return;
+			throw new IllegalArgumentException();
 		}
 		
 		try{
@@ -428,7 +430,11 @@ public class MitchellClaimService {
             		final List<MitchellClaimVehicleInfo> l_vehicleInfo_t = MitchellClaimVehicleInfoDAO
             					.queryForEq(MitchellClaimVehicleInfo.CLAIM_NUMBER_FIELD_NAME, mct.getClaimNumber());
             
-            
+            		
+            		if (basicInfo_t == null || lossInfo_t == null){
+            			throw new SQLException();
+            		}
+            		
             		TransactionManager.callInTransaction(connectionSource,
 				new Callable<Void>() {
 					public Void call() throws Exception {
