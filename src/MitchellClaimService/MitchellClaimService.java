@@ -490,24 +490,23 @@ public class MitchellClaimService {
 		final String cn = ClaimNumber;
 		
         TransactionManager.callInTransaction(connectionSource,
-				new Callable<Void>() {
-					public Void call() throws Exception {
-						/** delete from basic info table **/
-						MitchellClaimBasicInfoDAO.deleteById(cn);
+		new Callable<Void>() {
+			public Void call() throws Exception {
+				/** delete from basic info table **/
+				MitchellClaimBasicInfoDAO.deleteById(cn);
 							
-						/** delete from loss info table **/
-						MitchellClaimLossInfoDAO.deleteById(cn);
+				/** delete from loss info table **/
+				MitchellClaimLossInfoDAO.deleteById(cn);
 							
-						/** delete from vehicle info table **/
-						DeleteBuilder<MitchellClaimVehicleInfo, Void> mcVehicleInfoQueryBuilder = MitchellClaimVehicleInfoDAO.deleteBuilder();
-						mcVehicleInfoQueryBuilder.where()
-							                 .eq(MitchellClaimVehicleInfo.CLAIM_NUMBER_FIELD_NAME, cn);
-						mcVehicleInfoQueryBuilder.delete();
-						return null;
-					}
-				});
-			
-
+				/** delete from vehicle info table **/
+				DeleteBuilder<MitchellClaimVehicleInfo, Void> mcVehicleInfoQueryBuilder = MitchellClaimVehicleInfoDAO.deleteBuilder();
+				mcVehicleInfoQueryBuilder.where()
+							 .eq(MitchellClaimVehicleInfo.CLAIM_NUMBER_FIELD_NAME, cn);
+				mcVehicleInfoQueryBuilder.delete();
+				
+				return null;
+			}
+		});
 	}
 	
 	public static void main(String args[]){
