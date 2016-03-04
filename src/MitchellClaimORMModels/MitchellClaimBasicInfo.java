@@ -45,18 +45,18 @@ public class MitchellClaimBasicInfo {
 	}
 	
 	public MitchellClaimBasicInfo(String ClaimNumber,
-								  String ClaimantFirstName,
-								  String ClaimantLastName,
-								  StatusCode Status,
-								  XMLGregorianCalendar LossDate,
-								  long AssignedAdjusterID){
+				      String ClaimantFirstName,
+				      String ClaimantLastName,
+				      StatusCode Status,
+			              XMLGregorianCalendar LossDate,
+		                      long AssignedAdjusterID){
 		
-        this.ClaimNumber = ClaimNumber;
-        this.ClaimantFirstName = ClaimantFirstName;
-        this.ClaimantLastName = ClaimantLastName;
-        this.Status = Status;
-        this.LossDate = LossDate.toGregorianCalendar().getTime();
-        this.AssignedAdjusterID = AssignedAdjusterID;          
+        	this.ClaimNumber = ClaimNumber;
+        	this.ClaimantFirstName = ClaimantFirstName;
+        	this.ClaimantLastName = ClaimantLastName;
+        	this.Status = Status;
+        	this.LossDate = LossDate.toGregorianCalendar().getTime();
+        	this.AssignedAdjusterID = AssignedAdjusterID;          
 	}
 	
 	public String getClaimNumber(){
@@ -109,28 +109,28 @@ public class MitchellClaimBasicInfo {
 	
 	public void updateWithParsedClaim(MitchellClaimType mcType){
 		if (mcType.getAssignedAdjusterID() != null){
-    		AssignedAdjusterID = mcType.getAssignedAdjusterID();
-    	}
+    			AssignedAdjusterID = mcType.getAssignedAdjusterID();
+    		}
     	
-    	if (mcType.getClaimantFirstName() != null){
-    		ClaimantFirstName = mcType.getClaimantFirstName();
-    	}
+    		if (mcType.getClaimantFirstName() != null){
+    			ClaimantFirstName = mcType.getClaimantFirstName();
+    		}
     	
-    	if (mcType.getClaimantLastName() != null){
-    		ClaimantLastName = mcType.getClaimantLastName();
-    	}
+    		if (mcType.getClaimantLastName() != null){
+    			ClaimantLastName = mcType.getClaimantLastName();
+    		}
     	
-    	if (mcType.getClaimNumber() != null){
-    		ClaimNumber = mcType.getClaimNumber();
-    	}
+    		if (mcType.getClaimNumber() != null){
+    			ClaimNumber = mcType.getClaimNumber();
+    		}
     	
-    	if (mcType.getLossDate() != null){
-    		LossDate =  mcType.getLossDate().toGregorianCalendar().getTime();
-    	}
+    		if (mcType.getLossDate() != null){
+    			LossDate =  mcType.getLossDate().toGregorianCalendar().getTime();
+    		}
     	   	
-    	if (mcType.getStatus() != null){
-    		Status = mcType.getStatus();
-    	}
+    		if (mcType.getStatus() != null){
+    			Status = mcType.getStatus();
+    		}
     	
 	}
 	
