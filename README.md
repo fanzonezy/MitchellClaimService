@@ -2,25 +2,6 @@
 
 Part One: Basic System Architecture 
 
-create option:                                                       read option:                           
-
-            inputXML: string
-                    |
-            ________________
-            |               |                                         internal representation: MitchellClaimType
-            |  unmarshaler  |                                                               ^   
-            |_______________|                                                    ___________|__________
-                    |                                                           |                      |
-internal representation: MitchellClaimType                                      |      assembler       |
-  __________________|___________________                                        |______________________|        
-  |                 |                  |                                                    |
-basicInfo:(1)   lossInfo:(2)      vehicleInfo:(3)                               selected tuples: (1)/(2)/(3)
-  |                 |                  |                                                    ^    
-_ V_________________V__________________V____________________________________________________|_________________________
-|                                                                                                                     |
-|                                             Object/Relation Mapping Model                                           |
-|_____________________________________________________________________________________________________________________|
-
 (1) Interanl Representation:
 I used a user defined class MitchellClaimType to represent a claim. The definition of MitchellClaimType is based on other sub-type defined by xsd file: such as LossInfoType, VehicleInfoType, etc. What I did here is actually convert a XML schema to a bunch of JavaBean classes. All those classes are is in MitchellClaimServiceUtils.
 
