@@ -2,6 +2,8 @@
 
 Part One: Basic System Architecture Spec
 
+This is a eclipse project, simply download it and import it to eclipse and run testClient(in TestCases package). 
+
 Here are THREE packages: 
 MitchellClaimORMModels: includes all the ORM classes(models).
 MitchellClaimServiceUtils: includes all the data types sufficient to represent a claim
