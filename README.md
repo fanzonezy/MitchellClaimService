@@ -113,6 +113,7 @@ Part Four: Test Client Spec
 I used JUnit test frame work to test those APIs. By simply run TestClient you can run all the tests. Besides the sample XML file provided. I designed some algorithms to randomly generate legal XML file to test my API. those algorithms are packed in TestXMLStringGenerator class which is in test case package.
 
 Part Five: What to Improve
+
 (1) Work flow: 
 
 If we were ask to do this task again I would flow a TTD(Test Driven Design) work flow. I would first determine how should my API behave and what test should them pass. Cause I did't determine API behavior very well at first, I change the API several times, what is annoying is that once my API has changed, I should also change the test cases in order to test the new version API. This wasted me a lot of time.
