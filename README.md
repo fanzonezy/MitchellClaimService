@@ -66,12 +66,14 @@ output: MitchellClaimType
 spec: if seccessful, this API will return a MitchellClaimType instance which is uniquely determined by claim number.If the input claim number is invalid or the claim number is not in data base, an null will be returned. 
 
 (3) readByLossDate
+
 input: (1) start date: Date (2) end date: Date
 output: List<MitchellClaimType>
 
 spec: if seccessful, a list of MitchellClaimType instance will be returned. if there is no claim with a loss date within the range an empty list will be return. If the input arguments are invalid, an empty list will be returned.
 
 (4) updateClaim
+
 input: string
 output: None
 throws: IllegalArgumentException, SQLException
@@ -79,12 +81,14 @@ throws: IllegalArgumentException, SQLException
 spec: if seccessful, a claim in back store will be updated by input XML string. If the input is invalid, an IllegalArgumentException will be raised. if one of the write option to date base is failed, a SQLException will be raised. This API implement by transaction. If the claim you want to update is not in date base, an SQLException will be raised.    
 
 (5) readVehicleByClaimNumberAndVin
+
 input: (1) claim number: string (2) vin: string
 output: VehicleInfoType
 
 spec: if seccessful, an instance of VehicleInfo type will be returned. If not, a null object will be returned.
 
 (6) deleteByClaimNumber
+
 input: string
 output: None
 throws: IllegalArgumentException, SQLException
