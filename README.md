@@ -113,4 +113,28 @@ Part Four: Test Client Spec
 I used JUnit test frame work to test those APIs. By simply run TestClient you can run all the tests. Besides the sample XML file provided. I designed some algorithms to randomly generate legal XML file to test my API. those algorithms are packed in TestXMLStringGenerator class which is in test case package.
 
 Part Five: What to Improve
+(1) Work flow: 
+
+If we were ask to do this task again I would flow a TTD(Test Driven Design) work flow. I would first determine how should my API behave and what test should them pass. Cause I did't determine API behavior very well at first, I change the API several times, what is annoying is that once my API has changed, I should also change the test cases in order to test the new version API. This wasted me a lot of time.
+
+(2) Take good care of Exception:
+
+Because the limit of time, I haven't handled exception in a careful way. When I shoudl catch an Exception, I didn't distinguish the category of exception, but just did something like: 
+      catch(Exception e)}{
+            e.printStackTrace();      
+      }
+If you had enough time I will hanled this is a more careful way, at least I will catch different kinds of exception and hanle them differently.
+
+Also, I may design some self-defined exception to give upper level API from information when a exception occurs. 
+
+(3) Try to avoid over design.
+
+At first, I tried to design those APIs such that those APIs are both independent with XML format and with database structure(the definition of tables.). The first one is relatively easy to achieve, but the latter one is nearly impossible for me at this point. At the first week I spent a lot time to figure out a structure which supports this attributes. But, after several days, I realized it may be a little over-design. Since it's reasonable for API to know the structure of the datebase it operates on. Sometime, it may be very hard to perfectly decouple all the components in a system and some dependency may always exist. 
+
+(4) Write more test cases.
+
+Because the limit of time. I just write some basic test cases which may not test those APIs exaustively. 
+
+
+
 
