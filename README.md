@@ -6,8 +6,11 @@ This is a eclipse project, simply download it and import it to eclipse and run t
 
 Here are THREE packages: 
 MitchellClaimORMModels: includes all the ORM classes(models).
+
 MitchellClaimServiceUtils: includes all the data types sufficient to represent a claim
+
 MitchellClaimService: includes one Java file implementing all the API. 
+
 TestCases: inlcudes all the unit test and a test client. 
 
 (1) Interanl Representation:
@@ -89,5 +92,8 @@ throws: IllegalArgumentException, SQLException
 spec: if successful, a claim will be deleted from back store. If the input is invalid, an IllegalArgumentException will be raised. if one of the write option to date base is failed, a SQLException will be raised. This API implement by transaction.
 
 Part Four: Test Client Spec
+
 I used JUnit test frame work to test those APIs. By simply run TestClient you can run all the tests. Besides the sample XML file provided. I designed some algorithms to randomly generate legal XML file to test my API. those algorithms are packed in TestXMLStringGenerator class which is in test case package.
+
+Part Five: What to Improve
 
