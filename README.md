@@ -5,6 +5,7 @@ Part One: Basic System Architecture Spec
 This is a eclipse project, simply download it and import it to eclipse and run testClient(in TestCases package). 
 
 Here are THREE packages: 
+
 MitchellClaimORMModels: includes all the ORM classes(models).
 
 MitchellClaimServiceUtils: includes all the data types sufficient to represent a claim
@@ -14,6 +15,7 @@ MitchellClaimService: includes one Java file implementing all the API.
 TestCases: inlcudes all the unit test and a test client. 
 
 (1) Interanl Representation:
+
 I used a user defined class MitchellClaimType to represent a claim. The definition of MitchellClaimType is based on other sub-type defined by xsd file: such as LossInfoType, VehicleInfoType, etc. What I did here is actually convert a XML schema to a bunch of JavaBean classes. All those classes are is in MitchellClaimServiceUtils.
 
 Here are the mapping relations between types defined in xsd file and Java(Bean) classes:
@@ -35,24 +37,35 @@ VehicleInfoType    -->  VehicleInfoType(JavaBean class)
 Other primitive types is converted by JAXB standard, like string is converted to Java String, dateTime and date are converted to XMLGregorianCalendar. 
 
 (2) ORM model and Table Design
+
 In this project, ORM model is used. ORM model classes are defined in MitchellClaimORMModels. Obviously, we can not squeeze all claim information in a single table. Here, we simply used three tables: BasicInfo, LossInfo, VehicleInfo. What is worth mention here is that the ORM model classes/instances are actually the programmable representations of tables.
 
 Part Two: Implementation and Components:
+
 ORM: ORMLite
+
 DataBase driver: sqlite
+
 XML marshaler and unmarshaler: jaxb
+
 Unit Test; JUnit
 
 The work flow of implementation is: 
+
 (1) Define the behavior of APIs (May also made test cases, if working in TDD mode).
+
 (2) Design data base schema(ORM classes).
+
 (3) Define internal representation of claim XML(which is done automatically through JAXB).
+
 (4) implment API.
 
 Part Three: API Specification:
+
 (1) createMtchellClaim:
 
 input: String
+
 output: None
 throws: IllegalArgumentException, SQLException
 
